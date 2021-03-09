@@ -28,11 +28,12 @@ def load_user(user_id):
 # Blueprints
 ###########################
 
-from pokedex_app.auth.routes import auth
-from pokedex_app.main.routes import main
+# MUST not be named 'auth' and 'main' to avoid module naming conflict with unit tests
+from pokedex_app.auth.routes import auth as auth_routes
+from pokedex_app.main.routes import main as main_routes
 
-app.register_blueprint(auth)
-app.register_blueprint(main)
+app.register_blueprint(auth_routes)
+app.register_blueprint(main_routes)
 
 with app.app_context():
     db.create_all()
