@@ -2,6 +2,23 @@
 
 {% block content %}
 
-<h1>Asdf</h1>
+<h2>Pokemon</h2>
+
+<div class="pokemon">
+  {% for pokemon in region.pokemon %}
+    <div class="pokemon-details">
+      <a href="/pokemon/{{ pokemon.name }}">
+        <img src="{{ pokemon.photo_url }}" alt="{{ pokemon.name }}" width="215px">
+        <p><strong>{{ pokemon.name }}</strong></p>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+<h2>Edit Region</h2>
+
+<form method="POST" action="{{ url_for('main.region_details', region_name=region.name) }}">
+  {% include 'region_form.html' %}
+</form>
 
 {% endblock %}

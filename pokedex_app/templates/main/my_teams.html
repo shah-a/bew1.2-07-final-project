@@ -2,6 +2,13 @@
 
 {% block content %}
 
-<h1>Asdf</h1>
+<h1>My Teams</h1>
+
+{% for team in teams %}
+<div class="team">
+  <a href="/my_teams/{{ team.id }}">{{ team.name }}</a> -
+  {{ team.pokemon|length }} pokemon on <strong>{{ team.name }}</strong>
+</div>
+{% endfor %}
 
 {% endblock %}
