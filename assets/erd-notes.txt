@@ -1,0 +1,47 @@
+Route Notes:
+
+/signup (get, post) (redirect to '/login')
+/login (get, post) (redirec to '/')
+/logout (get) (redirect to '/')
+
+/ (get) <-- show regions
+/new_region (get, post) <-- add new region (redirect to '/region/<region_name>')
+/region/<region_name> (get, post) <-- show pokemon in region; edit region
+
+/new_pokemon (get, post) <-- add new pokemon (redirect to '/pokemon/<pokemon_name>')
+/pokemon/<pokemon_name> (get, post) <-- show pokemon details ('add to team' dropdown with team names?)
+
+/teams (get, post) <-- show teams (POST redirects to /remove_team/<team_id>)
+/teams/<team_id> (get, post) <-- show team details
+/new_team (get, post) <-- add new team ('redirects to '/teams/<team_id>')
+
+-------------------------
+Entity Notes:
+
+User fields:
+PK  - id
+Key - username
+Key - password
+
+Region fields:
+PK  - id
+Key - name
+Key - photo_url
+Key - description(/generation)
+
+Pokemon fields:
+PK  - id
+Key - name
+Key - photo_url
+Key - description
+FK  - region_id
+
+Team fields:
+PK  - id
+Key - name
+FK  - user_id
+
+Relationships:
+- Region <-> Pokemon: one to many
+- User <-> Teams: one to many
+- Pokemon <-> Teams: many to many
