@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField,  SubmitField
 from wtforms.validators import DataRequired, Length, URL
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from pokedex_app.models import Region
+from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
+from pokedex_app.models import Region, Pokemon
 
 class RegionForm(FlaskForm):
     """Form for adding a region."""
@@ -16,8 +16,19 @@ class PokemonForm(FlaskForm):
     name = StringField('Pokemon Name', validators=[DataRequired(), Length(max=80)])
     photo_url = StringField('Photo URL', validators=[DataRequired(), URL()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    region = QuerySelectField('Native Region', query_factory=lambda: Region.query)
+    region = QuerySelectField(
+        'Native Region',
+        validators=[DataRequired()],
+        query_factory=lambda: Region.query
+    )
     submit = SubmitField('Submit')
 
 class TeamForm(FlaskForm):
-    pass
+    """Form for adding a team."""
+    name = StringField('Team Name', validators=[DataRequired(), Length(max=80)])
+    pokemon = QuerySelectMultipleField(
+        'Pokemon',
+        validators=[DataRequired()],
+        query_factory=lambda: Pokemon.query
+    )
+    submit = SubmitField('Submit')

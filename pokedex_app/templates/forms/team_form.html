@@ -1,0 +1,22 @@
+{{ form.csrf_token }}
+<fieldset>
+  <legend>Region Information:</legend>
+
+  {{ form.name.label }}
+  {{ form.name }}
+  <ul>
+    {% for error in form.name.errors %}
+      <li class="error">{{ error }}</li>
+    {% endfor %}
+  </ul>
+
+  {{ form.pokemon.label }}
+  {{ form.pokemon }}
+  <ul>
+    {% for error in form.pokemon.errors %}
+      <li class="error">{{ error }}</li>
+    {% endfor %}
+  </ul>
+
+  {{ form.submit }}
+</fieldset>
