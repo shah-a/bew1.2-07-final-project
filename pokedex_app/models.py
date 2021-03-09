@@ -34,8 +34,8 @@ class Pokemon(db.Model):
     name = db.Column(db.String(80), nullable=False)
     photo_url = db.Column(URLType, nullable=False)
     description = db.Column(db.Text, nullable=False)
-    region_id = db.Column(db.Integer, db.ForeignKey('region.id'), nullable=False)
 
+    region_id = db.Column(db.Integer, db.ForeignKey('region.id'), nullable=False)
     region = db.relationship('Region', back_populates='pokemon')
 
     teams = db.relationship(

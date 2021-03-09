@@ -15,6 +15,9 @@ Route Notes:
 /teams/<team_id> (get, post) <-- show team details
 /new_team (get, post) <-- add new team ('redirects to '/teams/<team_id>')
 
+TODO: Remember to add `new_team.user_id = current_user.id` before commit
+TODO: Require auth only for making teams; anyone can add regions and pokemon
+
 -------------------------
 Entity Notes:
 
