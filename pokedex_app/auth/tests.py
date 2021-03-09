@@ -7,6 +7,10 @@ from pokedex_app.models import User
 
 # How to run all tests:
 # python -m unittest discover
+# OR just:
+# python -m unittest
+# The two are equivalent:
+# https://docs.python.org/3/library/unittest.html#test-discovery
 
 #################################################
 # Setup
