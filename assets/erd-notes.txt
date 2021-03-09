@@ -1,22 +1,23 @@
 Route Notes:
 
 /signup (get, post) (redirect to '/login')
-/login (get, post) (redirec to '/')
+/login (get, post) (redirect to '/')
 /logout (get) (redirect to '/')
 
-/ (get) <-- show regions
-/new_region (get, post) <-- add new region (redirect to '/region/<region_name>')
-/region/<region_name> (get, post) <-- show pokemon in region; edit region
+/ (get)
+/new_region (get, post) (redirect to '/region/<region_name>')
+/region/<region_name> (get, post) (redirect to '/region/<region_name>')
 
-/new_pokemon (get, post) <-- add new pokemon (redirect to '/pokemon/<pokemon_name>')
-/pokemon/<pokemon_name> (get, post) <-- show pokemon details ('add to team' dropdown with team names?)
+/new_pokemon (get, post) (redirect to '/pokemon/<pokemon_name>')
+/pokemon/<pokemon_name> (get, post) (redirect to '/pokemon/<pokemon_name>')
+  |--> 'add to team' dropdown with team names?
 
-/teams (get, post) <-- show teams (POST redirects to /remove_team/<team_id>)
-/teams/<team_id> (get, post) <-- show team details
-/new_team (get, post) <-- add new team ('redirects to '/teams/<team_id>')
+@login_required
+/new_team (get, post) ('redirects to '/teams/<team_id>')
+/my_teams (get)
+/my_teams/<team_id> (get)
 
-TODO: Remember to add `new_team.user_id = current_user.id` before commit
-TODO: Require auth only for making teams; anyone can add regions and pokemon
+TODO: Remember to add `new_team.user_id = current_user.id` before db.session.commit
 
 -------------------------
 Entity Notes:

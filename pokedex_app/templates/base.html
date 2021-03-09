@@ -17,11 +17,13 @@
       <a href="/">Home</a>
       <div>
         {% if current_user.is_authenticated %}
-          <a href="/">Route</a>
-          <a href="/">Route</a>
-          <a href="/">Route</a>
-          <a href="/">Route</a>
+          <a href="/new_region">Add Region</a>
+          <a href="/new_pokemon">Add Pokemon</a>
+          <a href="/my_teams">My Teams</a>
+          <a href="/logout">Log Out</a>
         {% else %}
+          <a href="/new_region">Add Region</a>
+          <a href="/new_pokemon">Add Pokemon</a>
           <a href="/signup">Sign Up</a>
           <a href="/login">Log In</a>
         {% endif %}

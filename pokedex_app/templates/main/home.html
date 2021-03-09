@@ -4,4 +4,17 @@
 
 <h1>Pokedex App</h1>
 
+<p><em>Add regions and pokemon! Make teams with your favourite pokemon!</em></p>
+
+<h2>All Regions</h2>
+
+{% for region in regions %}
+<div class="region">
+  <a href="/region/{{ region.name }}">{{ region.name }}</a> -
+  {{ region.pokemon|length }} pokemon added
+  <img src="{{ region.photo_url }}" alt="region photo">
+  <p><strong>Description: </strong>{{ region.description }}</p>
+</div>
+{% endfor %}
+
 {% endblock %}
