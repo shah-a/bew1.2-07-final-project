@@ -17,8 +17,6 @@ Route Notes:
 /my_teams (get)
 /my_teams/<team_id> (get)
 
-TODO: Remember to add `new_team.user_id = current_user.id` before db.session.commit
-
 -------------------------
 Entity Notes:
 
