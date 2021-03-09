@@ -8,6 +8,8 @@ In a fresh python virtual environment, ```cd``` to the project's root directory 
 
 ```pip3 install -r requirements.txt```
 
+```cp .env.example .env```
+
 ```python3 app.py```
 
 ## Default account
