@@ -10,9 +10,9 @@
 
 {% for region in regions %}
 <div class="region">
-  <a href="/region/{{ region.name }}">{{ region.name }}</a> -
-  {{ region.pokemon|length }} pokemon added
-  <img src="{{ region.photo_url }}" alt="region photo" width="215px">
+  <h3><a href="/region/{{ region.name }}">{{ region.name }}</a></h3>
+  <p>{{ region.pokemon|length }} pokemon added</p>
+  <a href="/region/{{ region.name }}"><img src="{{ region.photo_url }}" alt="region photo" width="500px"></a>
   <p><strong>Description: </strong>{{ region.description }}</p>
 </div>
 {% endfor %}

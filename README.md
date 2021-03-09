@@ -2,9 +2,25 @@
 
 Written in: Python 3.9.1
 
-## Default account:
+## How to start the app
 
-This is the default account saved in the database. Feel free to log in and look around.
+In a fresh python virtual environment, ```cd``` to the project's root directory and run:
 
-username: pokew0rm
-password: password
+```pip3 install -r requirements.txt```
+
+```python3 app.py```
+
+## Default account
+
+Default account credentials:
+
+```username: pokew0rm```
+
+```password: password```
+
+## Resetting the database
+
+```database.db.clean``` is a copy of the database loading with some demo data. If you make unwanted changes to ```database.db```, simply run:
+
+1. ```rm database.db```
+2. ```cp database.db.clean database.db```

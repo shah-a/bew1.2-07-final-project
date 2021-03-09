@@ -4,16 +4,16 @@
 
 <h1>{{ pokemon.name }}</h1>
 
-<p><img src="{{ pokemon.photo_url }}" width="300px"></p>
+<p><img src="{{ pokemon.photo_url }}" width="475px"></p>
 
-<p><strong>Native Region: </strong>{{ pokemon.region }}</p>
+<p><strong>Native Region: </strong>{{ pokemon.region.name }}</p>
 
 <p><strong>Description: </strong>{{ pokemon.description }}</p>
 
 <h2>Edit Pokemon</h2>
 
 <form method="POST" action="{{ url_for('main.pokemon_details', pokemon_name=pokemon.name) }}">
-  {% include 'pokemon_form.html' %}
+  {% include 'forms/pokemon_form.html' %}
 </form>
 
 {% endblock %}

@@ -19,7 +19,7 @@
   </ul>
 
   {{ form.description.label }}
-  {{ form.description }}
+  {{ form.description(rows="10") }}
   <ul>
     {% for error in form.description.errors %}
       <li class="error">{{ error }}</li>

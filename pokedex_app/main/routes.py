@@ -25,7 +25,7 @@ def new_region():
         db.session.commit()
 
         flash("New region was successfully added.")
-        return redirect(url_for('main.region_details', region_name=new_region.name))
+        return redirect(url_for('main.homepage'))
 
     return render_template('main/new_region.html', form=form)
 
@@ -55,12 +55,15 @@ def new_pokemon():
             region=form.region.data
         )
 
+        db.session.add(new_pokemon)
+        db.session.commit()
+
         flash("New pokemon successfully added.")
         return redirect(url_for('main.pokemon_details', pokemon_name=new_pokemon.name))
 
     return render_template('main/new_pokemon.html', form=form)
 
-@main.route('/pokemon/<pokemon_name>', methods=['GET'])
+@main.route('/pokemon/<pokemon_name>', methods=['GET', 'POST'])
 def pokemon_details(pokemon_name):
     pokemon = Pokemon.query.filter_by(name=pokemon_name).first()
     form = PokemonForm(obj=pokemon)
@@ -91,7 +94,7 @@ def new_team():
         flash("Team was successfully added.")
         return redirect(url_for('main.my_teams'))
 
-    return render_template('main/new_team.html')
+    return render_template('main/new_team.html', form=form)
 
 @main.route('/my_teams', methods=['GET'])
 @login_required
@@ -99,8 +102,17 @@ def my_teams():
     teams = Team.query.filter_by(user_id=current_user.id).all()
     return render_template('main/my_teams.html', teams=teams)
 
-@main.route('/my_teams/<team_id>', methods=['GET'])
+@main.route('/my_teams/<team_id>', methods=['GET', 'POST'])
 @login_required
 def team_details(team_id):
     team = Team.query.get(team_id)
-    return render_template('main/team_details.html', team=team)
+    form = TeamForm(obj=team)
+
+    if form.validate_on_submit():
+        form.populate_obj(team)
+        db.session.commit()
+
+        flash("Team was successfully updated.")
+        return redirect(url_for('main.team_details', team_id=team.id))
+
+    return render_template('main/team_details.html', team=team, form=form)

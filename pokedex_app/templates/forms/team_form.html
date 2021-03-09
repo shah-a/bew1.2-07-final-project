@@ -11,7 +11,7 @@
   </ul>
 
   {{ form.pokemon.label }}
-  {{ form.pokemon }}
+  {{ form.pokemon(size="15") }}
   <ul>
     {% for error in form.pokemon.errors %}
       <li class="error">{{ error }}</li>

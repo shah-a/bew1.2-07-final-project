@@ -4,17 +4,19 @@
 
 <h1>{{ team.name }}</h1>
 
+<div class="team-details">
 {% for pokemon in team.pokemon %}
-<div class="team">
-  <img src="{{ pokemon.photo_url }}" alt="pokemon photo" width="215px">
-  <p>{{ pokemon.name }}</p>
-</div>
+  <div>
+    <img src="{{ pokemon.photo_url }}" alt="pokemon photo" width="215px">
+    <p>{{ pokemon.name }}</p>
+  </div>
 {% endfor %}
+</div>
 
 <h2>Edit Team</h2>
 
 <form method="POST" action="{{ url_for('main.team_details', team_id=team.id) }}">
-  {% include 'team_form.html' %}
+  {% include 'forms/team_form.html' %}
 </form>
 
 {% endblock %}

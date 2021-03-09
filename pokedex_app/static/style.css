@@ -53,6 +53,14 @@ div.region, div.team {
   margin-bottom: 10px;
 }
 
+div.team-details {
+  display: flex;
+  flex-flow: row wrap;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 div.pokemon {
   display: flex;
   flex-direction: row;
@@ -70,4 +78,8 @@ div.pokemon-details {
 
 .error {
   color: red;
+}
+
+.add-team {
+  margin-bottom: 20px;
 }
